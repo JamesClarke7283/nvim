@@ -37,3 +37,7 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+-- Open Projects directory on start
+
+vim.cmd "cd ~/Projects"
