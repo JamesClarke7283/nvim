@@ -13,31 +13,32 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy_config = require "configs.lazy"
 
--- load plugins
+-- Load plugins using Lazy
 require("lazy").setup({
+  -- Import NvChad plugin with specific branch
   {
     "NvChad/NvChad",
     lazy = false,
     branch = "v2.5",
     import = "nvchad.plugins",
     config = function()
-      require "options"
+      require("options") -- Load options configuration
     end,
   },
-
+  -- Import other plugins
   { import = "plugins" },
-}, lazy_config)
+}, lazy_config) -- Assume 'lazy_config' is defined elsewhere in the code
 
--- load theme
+-- Load theme components
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-require "nvchad.autocmds"
+-- Import NvChad autocmds (automatic commands)
+require("nvchad.autocmds")
 
+-- Schedule mappings (keyboard shortcuts) to be applied after initializing Lazy
 vim.schedule(function()
-  require "mappings"
+  require("mappings") -- Load mappings configuration
 end)
 
--- Open Projects directory on start
-
-vim.cmd "cd ~/Projects"
+-- Functionality to open the Projects directory on start-up can be added hereim.cmd "cd ~/Projects"
