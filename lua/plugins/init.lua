@@ -55,7 +55,7 @@ return {
     "David-Kunz/gen.nvim",
     lazy = false,
     opts = {
-      model = "starling-lm:7b-beta-q6_K", -- The default model to use.
+      model = "starling-beta-7b-q6_k-8k", -- The default model to use.
       host = "ollama.jamesdavidclarke.com", -- The host running the Ollama service.
       port = 443,
       debug = false,
