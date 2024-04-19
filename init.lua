@@ -41,4 +41,26 @@ vim.schedule(function()
   require("mappings") -- Load mappings configuration
 end)
 
--- Functionality to open the Projects directory on start-up can be added hereim.cmd "cd ~/Projects"
+-- Functionality to open the Projects directory on start-up can be added here, and open NvimTreeToggle. 
+vim.cmd [[cd ~/Projects]]
+
+
+-- Configure Nvim tree to include .gitignore files but grayed out
+require("nvim-tree").setup({
+  filters = {
+    custom = {},
+    exclude = {},
+  },
+  renderer = {
+    highlight_git = true, -- Enable highlighting for git status
+    highlight_opened_files = "all", -- Optional: Highlight files that are opened
+  },
+  git = {
+    enable = true, -- Ensure git integration is enabled
+    ignore = false, -- Do not ignore git ignored files
+  },
+})
+
+-- Open Nvim Tree on startup
+-- vim.cmd [[NvimTreeToggle]]
+

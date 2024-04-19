@@ -36,9 +36,12 @@ return {
     opts = {
       ensure_installed = {
         "lua-language-server", "stylua",
-        "html-lsp", "css-lsp" , "prettier", "rust-analyzer", "pyright", "deno","tailwindcss-language-server","asm-lsp","bash-language-server","docker-compose-language-service","dockerfile-language-server","htmx-lsp","java-language-server","jinja-lsp","jq-lsp","json-lsp","luacheck","yaml-language-server","zls"
+        "html-lsp", "css-lsp" , "prettier", "rust-analyzer", "pyright", "deno","tailwindcss-language-server","asm-lsp","bash-language-server","docker-compose-language-service","dockerfile-language-server","htmx-lsp","java-language-server","jinja-lsp","jq-lsp","json-lsp","luacheck","yaml-language-server","zls","typescript-language-server"
       },
-    }
+    },
+  },
+  {
+  ""
   },
 
   {
@@ -65,7 +68,7 @@ return {
       end,
     },
   },
-{
+  {
     'nvimdev/lspsaga.nvim',
     lazy=false,
     config = function()
