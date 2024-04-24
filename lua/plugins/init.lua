@@ -13,12 +13,8 @@ return {
     lazy = false,
     config = function()
       require("trouble").setup({
-        height = 30,
+        height = 40,
       })
-
-      vim.keymap.set("n", "<leader>x", function()
-        vim.cmd("TroubleToggle")
-      end, { silent = true, noremap = true, desc = "Toggle Diagnostics Panel" })
     end
   },
 
