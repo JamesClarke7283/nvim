@@ -16,3 +16,6 @@ map("n", "<leader>gc", ":Git commit", { desc = "Git Commit" })
 map("n", "<leader>gps", ":Git push<CR>", { desc = "Git Push" })
 map("n", "<leader>gpl", ":Git pull<CR>", { desc = "Git Pull" })
 map("n", "<leader>gl", ":Git log<CR>", { desc = "Git Log" })
+
+-- Add the NvimTree toggle mapping
+map("n", "<leader>tt", ":NvimTreeToggle<CR>", { desc = "Toggle Nvim Tree" })
