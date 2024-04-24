@@ -59,7 +59,7 @@ return {
     lazy = false,
     opts = {
       model = "starling-beta-7b-q6_k-8k", -- The default model to use.
-      host = "ollama.jamesdavidclarke.com", -- The host running the Ollama service.
+      host = "models.novora.ai", -- The host running the Ollama service.
       port = 443,
       debug = false,
       command = function(options)
@@ -87,5 +87,47 @@ return {
   -- git plugin
     'tpope/vim-fugitive',
     lazy=false
+  },
+  {
+  "mistricky/codesnap.nvim",
+  build = "make build",
+  lazy=false,
+  opts = {
+    save_path = "~/Pictures/Screenshots",
+    has_breadcrumbs = true,
+    bg_theme = "bamboo",
+  }
+  },
+ {
+  "jackMort/ChatGPT.nvim",
+  event = "VeryLazy",  -- Ensure this is a valid event or remove it if unsure
+  config = function()
+    require("chatgpt").setup({
+      api_host_cmd = 'echo "modela.novora.ai"',
+      popup_layout = {default='right'},
+      popup_window = {border={text={top={" AI Assistant (LLM) "}}}},
+      openai_params = {
+        model = "starling-beta-7b-q6_k-8k",
+        max_tokens = 8000
+      },
+      openai_edit_params = {
+        model = "starling-beta-7b-q6_k-8k"
+      }
+    })
+  end,
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "nvim-lua/plenary.nvim",
+    "folke/trouble.nvim",
+    "nvim-telescope/telescope.nvim"
+  }
+ },
+  {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+  end
   }
 }
