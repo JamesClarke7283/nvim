@@ -59,8 +59,13 @@ require("nvim-tree").setup({
     enable = true, -- Ensure git integration is enabled
     ignore = false, -- Do not ignore git ignored files
   },
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true
+  },
 })
-
 -- Open Nvim Tree on startup
 -- vim.cmd [[NvimTreeToggle]]
 

@@ -40,5 +40,7 @@ map({"n", "x"}, "<leader>lmr", ":ChatGPTRun roxygen_edit<CR>", { desc = "Roxygen
 map({"n", "x"}, "<leader>lml", ":ChatGPTRun code_readability_analysis<CR>", { desc = "Code Readability Analysis" })
 map({"n", "x"}, "<leader>lmcc", ":ChatGPTCompleteCode<CR>", { desc = "Complete Code" })
 
+-- Telescope: Projects
+map("n", "<leader>tp", ":Telescope projects<CR>", { desc = "List Projects" })
 
 

@@ -53,21 +53,6 @@ return {
       },
     },
   },
-  -- Ollama Copilot
-  {
-    "David-Kunz/gen.nvim",
-    lazy = false,
-    opts = {
-      model = "starling-beta-7b-q6_k-8k", -- The default model to use.
-      host = "models.novora.ai", -- The host running the Ollama service.
-      port = 443,
-      debug = false,
-      command = function(options)
-        local body = {model = options.model, stream = true}
-        return "curl --silent --no-buffer -X POST https://" .. options.host .. ":" .. options.port .. "/api/chat -d $body"
-      end,
-    },
-  },
   {
     'nvimdev/lspsaga.nvim',
     lazy=false,
@@ -123,11 +108,23 @@ return {
   }
  },
   {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-  init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-  end
-  }
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  -- Project Manager
+  {
+  "ahmedkhalf/project.nvim",
+  lazy=false,
+  config = function()
+    require("project_nvim").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+      require('telescope').load_extension('projects')
+  end,
+    dependencies = {"nvim-telescope/telescope.nvim"}
+ }
 }
