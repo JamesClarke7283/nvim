@@ -83,14 +83,9 @@ return {
     "sunaku/vim-dasht",
     lazy=false
   },
+  {
   -- git plugin
     'tpope/vim-fugitive',
-    {
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup()
-            vim.keymap.set("n", "<leader>gs", vim.cmd.Git, { desc = 'Git Panel' })
-        end
-    },
-
+    lazy=false
+  }
 }
