@@ -84,6 +84,7 @@ return {
   event = "VeryLazy",  -- Ensure this is a valid event or remove it if unsure
   config = function()
     require("chatgpt").setup({
+      api_key_cmd = 'echo ""',
       api_host_cmd = 'echo "modela.novora.ai"',
       popup_layout = {default='right'},
       popup_window = {border={text={top={" AI Assistant (LLM) "}}}},
