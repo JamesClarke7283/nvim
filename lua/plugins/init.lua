@@ -85,15 +85,15 @@ return {
   config = function()
     require("chatgpt").setup({
       api_key_cmd = 'echo ""',
-      api_host_cmd = 'echo "modela.novora.ai"',
+      api_host_cmd = 'echo "ollama.novora.ai"',
       popup_layout = {default='right'},
       popup_window = {border={text={top={" AI Assistant (LLM) "}}}},
       openai_params = {
-        model = "starling-beta-7b-q6_k-8k",
-        max_tokens = 8000
+        model = "codegeex4:9b-all-q6_K",
+        max_tokens = 16000
       },
       openai_edit_params = {
-        model = "starling-beta-7b-q6_k-8k"
+        model = "codegeex4:9b-all-q6_K"
       }
     })
   end,
