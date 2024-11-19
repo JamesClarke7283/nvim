@@ -36,9 +36,6 @@ return {
       },
     },
   },
-  {
-  ""
-  },
 
   {
     "nvim-treesitter/nvim-treesitter",
@@ -85,15 +82,15 @@ return {
   config = function()
     require("chatgpt").setup({
       api_key_cmd = 'echo ""',
-      api_host_cmd = 'echo "ollama.novora.ai"',
+      api_host_cmd = 'echo "localhost"',
       popup_layout = {default='right'},
       popup_window = {border={text={top={" AI Assistant (LLM) "}}}},
       openai_params = {
-        model = "codegeex4:9b-all-q6_K",
+        model = "qwen2.5-coder:7b-instruct-q8_0",
         max_tokens = 16000
       },
       openai_edit_params = {
-        model = "codegeex4:9b-all-q6_K"
+        model = "qwen2.5-coder:3b-instruct-q8_0"
       }
     })
   end,
