@@ -1,5 +1,8 @@
 return {
   {
+    "MunifTanjim/nui.nvim",
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     config = function()
@@ -79,7 +82,6 @@ return {
  {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  lazy = false,
   version = false, -- set this if you want to always pull the latest change
   opts = {
     provider = "ollama",
@@ -126,7 +128,6 @@ ollama = {
       ft = { "markdown", "Avante" },
     },
   },
-},
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

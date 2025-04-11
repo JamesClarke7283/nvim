@@ -6,6 +6,6 @@ Based on the starter config for NvChad.
 
 ### Archlinux
 ```bash
-sudo pacman -S lua-language-server
-cp nvim ~/.config/nvim
+sudo pacman -S lua-language-server luarocks
+mv nvim ~/.config/nvim
 ```
