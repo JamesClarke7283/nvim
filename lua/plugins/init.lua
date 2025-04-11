@@ -83,13 +83,10 @@ return {
   version = false, -- set this if you want to always pull the latest change
   opts = {
     provider = "ollama",
-vendors = {
-  ollama = {
-    __inherited_from = "openai",
-    api_key_name = "",
-    endpoint = "http://127.0.0.1:11434/v1",
-    model = "qwen2.5-coder:7b-instruct-q8_0",
-  },
+ollama = {
+  endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
+  model = "qwen2.5-coder:14b-instruct-q6_K",
+},
 },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
