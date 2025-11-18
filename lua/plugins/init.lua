@@ -87,7 +87,7 @@ return {
 providers = {
 ollama = {
   endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
-  model = "qwen3:4b",
+  model = "Impulse2000/smollm3:3b-q4_k_m",
 },
 },
 },
