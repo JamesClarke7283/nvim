@@ -6,9 +6,10 @@ Based on the starter config for NvChad.
 
 ### Archlinux
 ```bash
-sudo pacman -S lua-language-server luarocks
+sudo pacman -S lua-language-server luarocks tree-sitter-cli
 cargo install htmx-lsp
 mv nvim ~/.config/nvim
+cd ~/.local/share/nvim/lazy/avante.nvim && make
 ```
 
 ### Cheat Sheet

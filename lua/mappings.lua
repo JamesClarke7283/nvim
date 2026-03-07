@@ -27,21 +27,13 @@ map("n", "<leader>tdp", ":TroubleToggle<CR>", { desc = "Toggle Diagnostics Panel
 map("x", "<leader>tc", ":<C-u>CodeSnap<CR>", { desc = "Save selected code snapshot into clipboard" })
 map("x", "<leader>tcs", ":<C-u>CodeSnapSave<CR>", { desc = "Save selected code snapshot in ~/Pictures/Screenshots" })
 
--- Large Language Model Keybinds
-map({"n", "x"}, "<leader>lmch", ":ChatGPT<CR>", { desc = "LLM Chat" })
-map({"n", "x"}, "<leader>lme", ":ChatGPTEditWithInstruction<CR>", { desc = "Edit with instruction" })
-map({"n", "x"}, "<leader>lmg", ":ChatGPTRun grammar_correction<CR>", { desc = "Grammar Correction" })
-map({"n", "x"}, "<leader>lmt", ":ChatGPTRun translate<CR>", { desc = "Translate" })
-map({"n", "x"}, "<leader>lmk", ":ChatGPTRun keywords<CR>", { desc = "Keywords" })
-map({"n", "x"}, "<leader>lmd", ":ChatGPTRun docstring<CR>", { desc = "Docstring" })
-map({"n", "x"}, "<leader>lma", ":ChatGPTRun add_tests<CR>", { desc = "Add Tests" })
-map({"n", "x"}, "<leader>lmo", ":ChatGPTRun optimize_code<CR>", { desc = "Optimize Code" })
-map({"n", "x"}, "<leader>lms", ":ChatGPTRun summarize<CR>", { desc = "Summarize" })
-map({"n", "x"}, "<leader>lmf", ":ChatGPTRun fix_bugs<CR>", { desc = "Fix Bugs" })
-map({"n", "x"}, "<leader>lmx", ":ChatGPTRun explain_code<CR>", { desc = "Explain Code" })
-map({"n", "x"}, "<leader>lmr", ":ChatGPTRun roxygen_edit<CR>", { desc = "Roxygen Edit" })
-map({"n", "x"}, "<leader>lml", ":ChatGPTRun code_readability_analysis<CR>", { desc = "Code Readability Analysis" })
-map({"n", "x"}, "<leader>lmcc", ":ChatGPTCompleteCode<CR>", { desc = "Complete Code" })
+-- Avante AI Keybinds
+map({"n", "v"}, "<leader>aa", "<cmd>AvanteAsk<CR>", { desc = "Avante: Ask" })
+map("v", "<leader>ae", "<cmd>AvanteEdit<CR>", { desc = "Avante: Edit" })
+map("n", "<leader>ar", "<cmd>AvanteRefresh<CR>", { desc = "Avante: Refresh" })
+map("n", "<leader>at", "<cmd>AvanteToggle<CR>", { desc = "Avante: Toggle" })
+map("n", "<leader>an", "<cmd>AvanteChat<CR>", { desc = "Avante: New Chat" })
+map("n", "<leader>as", "<cmd>AvanteSwitchProvider<CR>", { desc = "Avante: Switch Provider" })
 
 -- Telescope: Projects
 map("n", "<leader>tp", ":Telescope projects<CR>", { desc = "List Projects" })

@@ -1,6 +1,28 @@
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 vim.g.mapleader = " "
 
+-- Suppress deprecated vim.lsp.buf_get_clients() warning from plugins
+vim.lsp.buf_get_clients = function(bufnr)
+  return vim.lsp.get_clients({ buffer = bufnr or 0 })
+end
+
+-- Add avante native libraries to cpath
+local avante_lib_path = vim.fn.stdpath("data") .. "/lazy/avante.nvim/build/?.so"
+if not string.find(package.cpath, avante_lib_path, 1, true) then
+  package.cpath = package.cpath .. ";" .. avante_lib_path
+end
+
+-- Load environment variables from .env file
+local env_file = vim.fn.stdpath("config") .. "/.env"
+if vim.fn.filereadable(env_file) == 1 then
+  for _, line in ipairs(vim.fn.readfile(env_file)) do
+    local key, value = line:match("^([%w_]+)=(.+)$")
+    if key and value then
+      vim.fn.setenv(key, value)
+    end
+  end
+end
+
 -- Enable Avente AI
 --require('configs.avante')
 
