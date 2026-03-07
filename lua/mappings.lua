@@ -38,4 +38,14 @@ map("n", "<leader>as", "<cmd>AvanteSwitchProvider<CR>", { desc = "Avante: Switch
 -- Telescope: Projects
 map("n", "<leader>tp", ":Telescope projects<CR>", { desc = "List Projects" })
 
+-- 99 AI Agent keybinds
+map("v", "<leader>9v", function() require("99").visual() end, { desc = "99: Visual replace" })
+map("n", "<leader>9x", function() require("99").stop_all_requests() end, { desc = "99: Stop all requests" })
+map("n", "<leader>9s", function() require("99").search() end, { desc = "99: Search" })
+map("n", "<leader>9o", function() require("99").open() end, { desc = "99: Open last interaction" })
+map("n", "<leader>9l", function() require("99").view_logs() end, { desc = "99: View logs" })
+map("n", "<leader>9c", function() require("99").clear_previous_requests() end, { desc = "99: Clear requests" })
+map("n", "<leader>9m", function() require("99.extensions.telescope").select_model() end, { desc = "99: Select model" })
+map("n", "<leader>9p", function() require("99.extensions.telescope").select_provider() end, { desc = "99: Select provider" })
+
 

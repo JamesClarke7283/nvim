@@ -85,27 +85,58 @@ return {
     bg_theme = "bamboo",
   }
   },
+  -- MCP Hub for MCP server integration (used by Avante)
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    build = "bundled_build.lua",
+    config = function()
+      require("mcphub").setup({
+        use_bundled_binary = true,
+        extensions = {
+          avante = {
+            make_slash_commands = true,
+          },
+        },
+      })
+    end,
+  },
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
     version = false,
     build = "make",
-    opts = {
-      provider = "ollama",
-      input = {
-        provider = "dressing",
-      },
-      providers = {
-        ollama = {
-          endpoint = "https://ollama.com",
-          model = "kimi-k2.5:cloud",
-          api_key_name = "OLLAMA_API_KEY",
+    config = function()
+      require("avante").setup({
+        provider = "ollama",
+        input = {
+          provider = "dressing",
         },
-        copilot = {
-          -- copilot provider is built-in, just needs copilot.lua dependency
+        providers = {
+          ollama = {
+            endpoint = "https://ollama.com",
+            model = "kimi-k2.5:cloud",
+            api_key_name = "OLLAMA_API_KEY",
+          },
+          copilot = {
+            -- copilot provider is built-in, just needs copilot.lua dependency
+          },
         },
-      },
-    },
+        -- MCP Hub integration: inject active MCP server context into every prompt
+        system_prompt = function()
+          local hub = require("mcphub").get_hub_instance()
+          return hub and hub:get_active_servers_prompt() or ""
+        end,
+        -- MCP Hub integration: add use_mcp_tool and access_mcp_resource tools
+        custom_tools = function()
+          return {
+            require("mcphub.extensions.avante").mcp_tool(),
+          }
+        end,
+      })
+    end,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "stevearc/dressing.nvim",
@@ -113,6 +144,7 @@ return {
       "MunifTanjim/nui.nvim",
       "nvim-tree/nvim-web-devicons",
       "zbirenbaum/copilot.lua",
+      "ravitemer/mcphub.nvim",
       {
         "HakonHarnes/img-clip.nvim",
         event = "VeryLazy",
@@ -155,5 +187,25 @@ return {
       require('telescope').load_extension('projects')
   end,
     dependencies = {"nvim-telescope/telescope.nvim"}
- }
+ },
+  -- ThePrimeagen's 99 AI agent
+  {
+    "ThePrimeagen/99",
+    lazy = false,
+    config = function()
+      local _99 = require("99")
+      local cwd = vim.uv.cwd()
+      local basename = vim.fs.basename(cwd)
+      _99.setup({
+        logger = {
+          level = _99.DEBUG,
+          path = "/tmp/" .. basename .. ".99.debug",
+          print_on_error = true,
+        },
+        md_files = {
+          "AGENT.md",
+        },
+      })
+    end,
+  },
 }
