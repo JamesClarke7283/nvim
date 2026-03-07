@@ -28,6 +28,7 @@ return {
       require("nvchad.configs.lspconfig").defaults()
       require("configs.lspconfig")
     end,
+    lazy = false,
   },
 
   {
@@ -87,7 +88,7 @@ return {
 providers = {
 ollama = {
   endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
-  model = "Impulse2000/smollm3:3b-q4_k_m",
+  model = "Impulse2000/smollm3:3b-q8_0",
 },
 },
 },
