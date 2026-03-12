@@ -21,7 +21,23 @@ return {
     lazy = false,
     config = function()
       require("trouble").setup({
-        height = 40,
+        modes = {
+          diagnostics = {
+            win = {
+              type = "split",
+              position = "bottom",
+              size = 15,
+            },
+          },
+        },
+      })
+      -- Auto-open diagnostics panel on startup
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          vim.schedule(function()
+            vim.cmd("Trouble diagnostics open")
+          end)
+        end,
       })
     end
   },
@@ -51,9 +67,92 @@ return {
     opts = {
       ensure_installed = {
         "vim", "lua", "vimdoc",
-        "html", "css"
+        "html", "css",
+        "rust", "toml",
       },
     },
+  },
+  -- Rust: rustaceanvim for best-in-class rust-analyzer integration
+  -- Manages rust-analyzer LSP automatically — do NOT set up rust_analyzer via lspconfig
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^8',
+    lazy = false, -- plugin is already lazy by filetype
+    init = function()
+      vim.g.rustaceanvim = {
+        -- Plugin configuration
+        tools = {
+          -- Run tests in background and show failed tests as diagnostics (works with Trouble)
+          test_executor = 'background',
+          -- Use grouped code actions with fallback to vim.ui.select
+          code_actions = {
+            ui_select_fallback = true,
+          },
+        },
+        -- LSP configuration
+        server = {
+          on_attach = function(client, bufnr)
+            -- Enable inlay hints
+            if client.server_capabilities.inlayHintProvider then
+              vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+            end
+          end,
+          default_settings = {
+            ['rust-analyzer'] = {
+              -- Enable clippy on save instead of check
+              check = {
+                command = 'clippy',
+                extraArgs = { '--no-deps' },
+              },
+              -- Enable all proc macro support
+              procMacro = {
+                enable = true,
+              },
+              -- Cargo features
+              cargo = {
+                allFeatures = true,
+                loadOutDirsFromCheck = true,
+              },
+              -- Diagnostics
+              diagnostics = {
+                enable = true,
+                styleLints = {
+                  enable = true,
+                },
+              },
+              -- Inlay hints
+              inlayHints = {
+                bindingModeHints = { enable = true },
+                closureReturnTypeHints = { enable = "always" },
+                lifetimeElisionHints = { enable = "always" },
+                reborrowHints = { enable = "always" },
+              },
+              -- Completion
+              completion = {
+                fullFunctionSignatures = { enable = true },
+                postfix = { enable = true },
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
+  -- Rust: crates.nvim for Cargo.toml dependency management
+  {
+    'saecki/crates.nvim',
+    tag = 'stable',
+    event = { "BufRead Cargo.toml" },
+    config = function()
+      require('crates').setup({
+        lsp = {
+          enabled = true,
+          actions = true,
+          completion = true,
+          hover = true,
+        },
+      })
+    end,
   },
   {
     'nvimdev/lspsaga.nvim',

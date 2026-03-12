@@ -1,8 +1,8 @@
 -- LSP servers with default config
+-- NOTE: rust_analyzer is managed by rustaceanvim — do NOT add it here
 local servers = {
   "html",
   "cssls",
-  "rust_analyzer",
   "pyright",
   "tailwindcss",
   "asm_lsp",

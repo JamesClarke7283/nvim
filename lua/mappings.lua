@@ -20,8 +20,8 @@ map("n", "<leader>gl", ":Git log<CR>", { desc = "Git Log" })
 -- Add the NvimTree toggle mapping
 map("n", "<leader>tt", ":NvimTreeToggle<CR>", { desc = "Toggle Nvim Tree" })
 
--- Add the trouble toggle
-map("n", "<leader>tdp", ":TroubleToggle<CR>", { desc = "Toggle Diagnostics Panel" })
+-- Add the trouble toggle (Trouble v3 syntax)
+map("n", "<leader>tdp", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Toggle Diagnostics Panel" })
 
 -- Add CodeSnap mappings for visual mode
 map("x", "<leader>tc", ":<C-u>CodeSnap<CR>", { desc = "Save selected code snapshot into clipboard" })
