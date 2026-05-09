@@ -216,7 +216,7 @@ return {
         providers = {
           ollama = {
             endpoint = "https://ollama.com",
-            model = "kimi-k2.5:cloud",
+            model = "glm-5.1:cloud",
             api_key_name = "OLLAMA_API_KEY",
           },
           copilot = {
